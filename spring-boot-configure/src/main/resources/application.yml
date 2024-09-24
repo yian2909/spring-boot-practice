@@ -1,0 +1,74 @@
+server:
+  host: "localhost"
+  port: 8080
+  context-path: "/api"
+
+#family:
+#  family-name: "happy1"
+#  father: ${father.name:zhangsan}
+#  mother: "Rose"
+#  child: "Tom"
+#father:
+#  name: "张三"
+
+person:
+  first-name: ${first-name:John}
+  last-name: ${last-name:Doe}
+  age: ${random.int(20,50)}
+  id: ${random.uuid}
+  phone: ${phone:1234567890}
+
+student:
+  name: 张三
+  age: 20
+  happy: true
+  birth: 2004/10/10
+  map: {k1: v1,k2: v2}
+  list:
+    - code
+    - read
+    - music
+  dog:
+    name: 小黑
+    age: 5
+
+db:
+  url: jdbc:mysql://127.0.0.1:3306/spring_boot?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowMultiQueries=true
+  username: root
+  password: 1412
+  driver-class-name: com.mysql.cj.jdbc.Driver
+
+spring:
+  mail:
+    host: smtp.qq.com
+    username: 915826506@qq.com
+    password: ndfahjvuxflsbdhe
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+  web:
+    resources:
+      static-locations: classpath:/static/,file:${file.upload-path}
+    servlet:
+      multipart:
+        max-file-size: 10485760
+        max-request-size: 10485760
+
+custom:
+  qrcode:
+    content: "https://www.bilibili.com/video/BV1he4y1w7wB"
+  log:
+    level: "INFO"
+  backup:
+    location: D:/Java/backup.log
+
+jwt:
+  secret: mySecretKey
+  expiration: 360000
+
+aliyun:
+  oss:
+    endpoint: https://oss-cn-hangzhou.aliyuncs.com
+    accessKeyId: LTAI5tMUpntrGxqt6ZLrCw5s
+    accessKeySecret: hXbObSeZpDyQYFAYBC34UwIILQOQpX
+    bucketName: yian2909-bucket
