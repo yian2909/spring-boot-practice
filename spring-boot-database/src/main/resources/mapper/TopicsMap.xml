@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.xg.springboot.database.mapper.TopicsMapper">
+
+    <resultMap id="topicsMap" type="Topics">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="view_count" property="viewCount" jdbcType="INTEGER"/>
+        <result column="followers_count" property="followersCount" jdbcType="INTEGER"/>
+        <result column="is_following" property="isFollowing" jdbcType="TINYINT"/>
+        <result column="title" property="title" jdbcType="VARCHAR"/>
+        <result column="introduction" property="introduction" jdbcType="VARCHAR"/>
+        <result column="banner" property="banner" jdbcType="VARCHAR"/>
+        <result column="updated" property="updated" jdbcType="BIGINT"/>
+        <collection property="tags" ofType="Tags">
+            <id column="section_id" property="sectionId"/>
+            <result column="section_title" property="sectionTitle"/>
+            <result column="topic_id" property="topicId"/>
+<!--            <id column="section_id" jdbcType="VARCHAR"/>-->
+<!--            <result column="section_title" jdbcType="VARCHAR"/>-->
+<!--            <result column="topic_id" jdbcType="BIGINT"/>-->
+        </collection>
+    </resultMap>
+
+    <select id="findAll" resultMap="topicsMap">
+        SELECT t.*, ta.*
+        FROM topics t
+                LEFT JOIN tags ta ON t.id = ta.topic_id
+    </select>
+</mapper>
