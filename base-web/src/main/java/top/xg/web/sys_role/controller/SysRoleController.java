@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import top.xg.reshult.ResultVo;
@@ -19,6 +20,7 @@ import top.xg.web.sys_role.service.SysRoleService;
 @RequestMapping("/api/role")
 @RestController
 @AllArgsConstructor
+@Slf4j
 public class SysRoleController {
     private final SysRoleService sysRoleService;
 
@@ -52,14 +54,13 @@ public class SysRoleController {
     @PostMapping("/getList")
     @Operation(summary = "角色列表")
     public ResultVo<?> getList(@RequestBody RoleParm parm) {
-        //构造分⻚对象
-        IPage<SysRole> page=new Page<>(parm.getCurrentPage(),parm.getPageSize());
-        //构造查询条件
-        QueryWrapper<SysRole> query=new QueryWrapper<>();
-        if(StringUtils.isNotEmpty(parm.getRoleName())){
+        IPage<SysRole> page = new Page<>(parm.getCurrentPage(),parm.getPageSize());
+        QueryWrapper<SysRole> query = new QueryWrapper<>();
+        if (StringUtils.isNotEmpty(parm.getRoleName())) {
             query.lambda().like(SysRole::getRoleName,parm.getRoleName());
         }
-        IPage<SysRole> list = sysRoleService.page(page,query);
+        IPage<SysRole> list = sysRoleService.page(page, query);
         return ResultUtils.success("查询成功",list);
     }
+
 }
