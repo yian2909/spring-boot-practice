@@ -1,4 +1,4 @@
-package top.xg.reshult;
+package top.xg.result;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

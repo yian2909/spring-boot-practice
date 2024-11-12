@@ -1,4 +1,4 @@
-package top.xg.reshult;
+package top.xg.result;
 
 /**
  * @author Lenovo

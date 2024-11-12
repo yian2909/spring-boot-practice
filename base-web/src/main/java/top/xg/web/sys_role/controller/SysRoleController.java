@@ -8,7 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.*;
-import top.xg.reshult.ResultVo;
+import top.xg.result.ResultVo;
 import top.xg.utils.ResultUtils;
 import top.xg.web.sys_role.entity.RoleParm;
 import top.xg.web.sys_role.entity.SelectItem;

@@ -8,7 +8,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.*;
-import top.xg.reshult.ResultVo;
+import top.xg.result.ResultVo;
 import top.xg.utils.ResultUtils;
 import top.xg.web.sys_user.entity.SysUser;
 import top.xg.web.sys_user.entity.SysUserPage;

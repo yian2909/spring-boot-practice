@@ -1,7 +1,7 @@
 package top.xg.utils;
 
-import top.xg.reshult.ResultVo;
-import top.xg.reshult.StatusCode;
+import top.xg.result.ResultVo;
+import top.xg.result.StatusCode;
 
 /**
  * @author Lenovo
