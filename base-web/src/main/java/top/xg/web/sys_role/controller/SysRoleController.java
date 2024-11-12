@@ -11,8 +11,13 @@ import org.springframework.web.bind.annotation.*;
 import top.xg.reshult.ResultVo;
 import top.xg.utils.ResultUtils;
 import top.xg.web.sys_role.entity.RoleParm;
+import top.xg.web.sys_role.entity.SelectItem;
 import top.xg.web.sys_role.entity.SysRole;
 import top.xg.web.sys_role.service.SysRoleService;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 /**
  * @author Lenovo
@@ -63,4 +68,19 @@ public class SysRoleController {
         return ResultUtils.success("查询成功",list);
     }
 
+    @GetMapping("/selectList")
+    @Operation(summary = "角色下拉数据")
+    public ResultVo<?> selectList() {
+        List<SysRole> list = sysRoleService.list();
+        List<SelectItem> selectItems = new ArrayList<>();
+        Optional.ofNullable(list).orElse(new ArrayList<>())
+                .forEach(item -> {
+                    SelectItem vo = new SelectItem();
+                    vo.setCheck(false);
+                    vo.setLabel(item.getRoleName());
+                    vo.setValue(item.getRoleId());
+                    selectItems.add(vo);
+                });
+        return ResultUtils.success("查询成功",selectItems);
+    }
 }
