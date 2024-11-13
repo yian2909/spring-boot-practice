@@ -46,3 +46,8 @@ knife4j:
     username: admin
     password: 123456
 
+#jwt配置
+jwt:
+  issuer: gx
+  secret: top.xg
+  expiration: 60
