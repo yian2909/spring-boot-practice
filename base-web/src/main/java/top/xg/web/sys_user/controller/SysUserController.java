@@ -22,6 +22,7 @@ import top.xg.web.sys_user.entity.SysUser;
 import top.xg.web.sys_user.entity.SysUserPage;
 import top.xg.web.sys_user.service.SysUserService;
 import top.xg.web.sys_user_role.entity.SysUserRole;
+import top.xg.web.sys_user.entity.UpdatePasswordParm;
 import top.xg.web.sys_user_role.service.SysUserRoleService;
 
 import javax.imageio.ImageIO;
@@ -176,4 +177,21 @@ public class SysUserController {
         return ResultUtils.success("查询成功",assignTree);
     }
 
+    //修改密码
+    @PostMapping("/updatePassword")
+    @Operation(summary="修改密码")
+    public ResultVo<?> updatePassword(@RequestBody UpdatePasswordParm parm){
+        SysUser user=sysUserService.getById(parm.getUserId());
+        if(!parm.getOldPassword().equals(user.getPassword())){
+            return ResultUtils.error("原密码不正确!");
+        }
+        //更新条件
+        UpdateWrapper<SysUser> query=new UpdateWrapper<>();
+        query.lambda().set(SysUser::getPassword,parm.getPassword())
+                .eq(SysUser::getUserId,parm.getUserId());
+        if(sysUserService.update(query)){
+            return ResultUtils.success("密码修改成功!");
+        }
+        return ResultUtils.error("密码修改失败!");
+    }
 }
