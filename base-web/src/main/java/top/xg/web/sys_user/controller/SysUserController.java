@@ -14,6 +14,8 @@ import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.web.bind.annotation.*;
 import top.xg.result.ResultVo;
 import top.xg.utils.ResultUtils;
+import top.xg.web.sys_menu.entity.AssignTreeParm;
+import top.xg.web.sys_menu.entity.AssignTreeVo;
 import top.xg.web.sys_user.entity.LoginParm;
 import top.xg.web.sys_user.entity.LoginVo;
 import top.xg.web.sys_user.entity.SysUser;
@@ -166,4 +168,12 @@ public class SysUserController {
         vo.setNickName(one.getNickName());
         return ResultUtils.success("登录成功",vo);
     }
+
+    @PostMapping("/tree")
+    @Operation(summary = "查询菜单树")
+    public ResultVo<?> getAssignTree(@RequestBody AssignTreeParm parm) {
+        AssignTreeVo assignTree = sysUserService.getAssignTree(parm);
+        return ResultUtils.success("查询成功",assignTree);
+    }
+
 }
