@@ -14,6 +14,8 @@ import top.xg.web.sys_role.entity.RoleParm;
 import top.xg.web.sys_role.entity.SelectItem;
 import top.xg.web.sys_role.entity.SysRole;
 import top.xg.web.sys_role.service.SysRoleService;
+import top.xg.web.sys_role_menu.service.SysRoleMenuService;
+import top.xg.web.sys_role_menu.entity.SaveMenuParm;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +30,7 @@ import java.util.Optional;
 @Slf4j
 public class SysRoleController {
     private final SysRoleService sysRoleService;
+    private final SysRoleMenuService sysRoleMenuService;
 
     @PostMapping
     @Operation(summary = "新增角色")
@@ -83,4 +86,13 @@ public class SysRoleController {
                 });
         return ResultUtils.success("查询成功",selectItems);
     }
+
+    //保存角色菜单
+    @PostMapping("/saveRoleMenu")
+    @Operation(summary = "保存角色菜单")
+    public ResultVo<?> saveRoleMenu(@RequestBody SaveMenuParm parm) {
+        sysRoleMenuService.saveRoleMenu(parm);
+        return ResultUtils.success("分配成功");
+    }
+
 }
