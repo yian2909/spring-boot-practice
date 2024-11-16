@@ -15,6 +15,10 @@ spring:
   mvc:
     path-match:
       matching-strategy: ant_path_matcher
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
 
 # 数据持久层框架配置
 mybatis-plus:
