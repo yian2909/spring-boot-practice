@@ -1,0 +1,94 @@
+server:
+  # 系统运行端口
+  port: 8080
+  servlet:
+    # 上下文路径前缀
+    context-path: /share-app-api
+
+spring:
+  application:
+    # 系统名称
+    name: share-app-api
+  profiles:
+    # 运行环境
+    active: dev
+  mvc:
+    path-match:
+      matching-strategy: ant_path_matcher
+
+# 数据持久层框架配置
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*Mapper.xml
+  # 实体类包路径，可自行修改
+  type-aliases-package: top.ssy.*.entity
+  configuration:
+    # 字段名允许驼峰
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    # 日志输出
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      # 逻辑删除配置
+      logic-delete-field: true
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+
+# 系统日志输出配置
+logging:
+  # 配置文件位置
+  config: classpath:log/logback-spring.xml
+
+# springdoc-openapi
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+  api-docs:
+    path: /v3/api-docs
+  group-configs:
+    - group: 'default'
+      paths-to-match: '/**'
+      # 扫描 controller 包的路径，自行修改
+      packages-to-scan: top.ssy.share.app.controller
+
+# knife4j
+knife4j:
+  enable: true
+  setting:
+    language: zh_cn
+  basic:
+    enable: true
+    username: admin
+    password: 123456
+
+# 自定义配置，需要校验的 url 前缀
+auth:
+  valid_urls:
+    - /auth/logout
+    - /user/**
+    - /resource/publish
+
+# 阿里云 OSS 的配置
+aliyun:
+  oss:
+    # oss 对外服务的访问域名
+    endpoint: https://oss-cn-hangzhou.aliyuncs.com
+    # 访问身份验证中用到用户标识
+    accessKeyId: LTAI5tMUpntrGxqt6ZLrCw5s
+    # 用户用于加密签名字符串和 oss 用来验证签名字符串的密钥
+    accessKeySecret: hXbObSeZpDyQYFAYBC34UwIILQOQpX
+    # oss的存储空间名
+    bucketName: yian2909-bucket
+
+# 第三方短信服务配置
+share:
+  sms:
+    ccp:
+      serverIp: app.cloopen.com
+      port: 8883
+      accountSId: 2c94811c9035ff9f0192adc226dc7c86
+      accountToken: 5b1a37100f5f4e8d8abcdd3b1bf8cd60
+      appId: 2c94811c9035ff9f0192adc228567c8d
+      templateId: 1
