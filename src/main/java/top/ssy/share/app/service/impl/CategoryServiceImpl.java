@@ -22,4 +22,9 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
         LambdaQueryWrapper<Category> wrapper = new LambdaQueryWrapper<>();
         return CategoryConvert.INSTANCE.convert(list(wrapper));
     }
+
+    @Override
+    public List<String> queryCategoryNameList(List<Integer> pkIdList) {
+        return baseMapper.selectBatchIds(pkIdList).stream().map(Category::getTitle).toList();
+    }
 }
