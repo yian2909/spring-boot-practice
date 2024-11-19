@@ -1,0 +1,41 @@
+2024-11-17 22:09:38.685 ERROR [restartedMain] org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to bind properties under 'logging.level.file.path' to org.springframework.boot.logging.LogLevel:
+
+    Property: logging.level.file.path
+    Value: "./logs"
+    Origin: class path resource [application.yml] - 6:13
+    Reason: failed to convert java.lang.String to org.springframework.boot.logging.LogLevel (caused by java.lang.IllegalArgumentException: No enum constant org.springframework.boot.logging.LogLevel../logs)
+
+Action:
+
+Update your application's configuration. The following values are valid:
+
+    DEBUG
+    ERROR
+    FATAL
+    INFO
+    OFF
+    TRACE
+    WARN
+
+2024-11-17 22:14:25.087 INFO  [restartedMain] top.xg.springboot.logging.Application : Starting Application using Java 17.0.2 with PID 104720 (C:\Users\Lenovo\IdeaProjects\spring-boot-pratice\spring-boot-logging\target\classes started by Lenovo in C:\Users\Lenovo\IdeaProjects\spring-boot-pratice)
+2024-11-17 22:14:25.089 INFO  [restartedMain] top.xg.springboot.logging.Application : No active profile set, falling back to 1 default profile: "default"
+2024-11-17 22:14:25.124 INFO  [restartedMain] org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-11-17 22:14:25.125 INFO  [restartedMain] org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-11-17 22:14:25.873 INFO  [restartedMain] org.springframework.boot.web.embedded.tomcat.TomcatWebServer : Tomcat initialized with port 8080 (http)
+2024-11-17 22:14:25.882 INFO  [restartedMain] org.apache.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8080"]
+2024-11-17 22:14:25.885 INFO  [restartedMain] org.apache.catalina.core.StandardService : Starting service [Tomcat]
+2024-11-17 22:14:25.885 INFO  [restartedMain] org.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-11-17 22:14:25.923 INFO  [restartedMain] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2024-11-17 22:14:25.923 INFO  [restartedMain] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 798 ms
+2024-11-17 22:14:26.197 INFO  [restartedMain] org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer : LiveReload server is running on port 35729
+2024-11-17 22:14:26.209 INFO  [restartedMain] org.apache.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8080"]
+2024-11-17 22:14:26.224 INFO  [restartedMain] org.springframework.boot.web.embedded.tomcat.TomcatWebServer : Tomcat started on port 8080 (http) with context path '/'
+2024-11-17 22:14:26.233 INFO  [restartedMain] top.xg.springboot.logging.Application : Started Application in 1.602 seconds (process running for 4.039)
