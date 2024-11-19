@@ -1,0 +1,48 @@
+package top.xg.zhihu.api.controller;
+
+import jakarta.annotation.Resource;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import top.xg.zhihu.api.common.ResponseResult;
+import top.xg.zhihu.api.entity.Special;
+import top.xg.zhihu.api.service.SpecialService;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * @author Lenovo
+ */
+@RestController
+@RequestMapping("/api/v1/special")
+public class SpecialController {
+    @Resource
+    private SpecialService specialService;
+
+    @GetMapping("all")
+    public ResponseResult getAll(){
+        List<Special> specials = specialService.getAll();
+        return ResponseResult.builder()
+                .code(200)
+                .msg("数据获取成功")
+                .data(specials)
+                .build();
+    }
+
+    @GetMapping("/page")
+    public ResponseResult getByPage(@RequestParam int limit, @RequestParam int offset){
+        Map<String,Object> map = new HashMap<>();
+        List<Special> specials = specialService.getByPage(limit, offset);
+        map.put("specials",specials);
+        map.put("total",specialService.getAll().size());
+        return ResponseResult.builder()
+                .code(200)
+                .msg("数据获取成功")
+                .data(map)
+                .build();
+    }
+
+}
