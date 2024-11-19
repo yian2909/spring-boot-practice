@@ -1,0 +1,33 @@
+<<<<<<< HEAD
+package top.xg.springboot.configure.service;
+
+import cn.hutool.log.Log;
+import cn.hutool.log.LogFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+
+@Service
+public class LogService {
+    @Value("${custom.log.level}")
+    private String logLevel;
+
+    private final Log log = LogFactory.get();
+
+    public void logMessage(){
+        log.info("当前日志级别为:"+logLevel);
+        if ("DEBUG".equalsIgnoreCase(logLevel)){
+            log.debug("这是调试信息");
+        }else if ("INFO".equalsIgnoreCase(logLevel)){
+            log.info("这是普通信息");
+        }
+    }
+}
+=======
+package top.xg.springboot.configure.service;
+
+import cn.hutool.log.Log;
+import cn.hutool.log.LogFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+
+>>>>>>> 3a445c108c2cb986de68ce29000d3e6bf4ca24b3

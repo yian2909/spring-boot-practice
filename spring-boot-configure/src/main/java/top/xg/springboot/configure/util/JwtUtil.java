@@ -1,0 +1,33 @@
+<<<<<<< HEAD
+package top.xg.springboot.configure.util;
+
+import cn.hutool.jwt.JWTUtil;
+import jakarta.annotation.Resource;
+import org.springframework.stereotype.Component;
+import top.xg.springboot.configure.config.JwtConfig;
+
+import java.util.Date;
+import java.util.Map;
+
+=======
+package top.xg.springboot.configure.util;
+
+import cn.hutool.jwt.JWTUtil;
+import jakarta.annotation.Resource;
+import org.springframework.stereotype.Component;
+import top.xg.springboot.configure.config.JwtConfig;
+
+import java.util.Date;
+import java.util.Map;
+
+@Component
+public class JwtUtil {
+    @Resource
+    private JwtConfig jwtConfig;
+
+    public String generateToken(Map<String,Object> claims) {
+        claims.put("exp",new Date(System.currentTimeMillis() + jwtConfig.getExpiration()));
+        return JWTUtil.createToken(claims,jwtConfig.getSecret().getBytes());
+    }
+}
+>>>>>>> 3a445c108c2cb986de68ce29000d3e6bf4ca24b3
