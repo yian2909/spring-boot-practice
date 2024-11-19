@@ -1,0 +1,3 @@
+logging:
+  pattern:
+    console: "%red(%d{yyyy-MM-dd HH:mm:ss}) %highlight(%-5level) - %cyan(%msg%n)"

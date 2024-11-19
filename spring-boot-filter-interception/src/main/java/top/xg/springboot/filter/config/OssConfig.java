@@ -1,0 +1,32 @@
+package top.xg.springboot.filter.config;
+
+import com.aliyun.oss.OSS;
+import com.aliyun.oss.OSSClientBuilder;
+import lombok.Data;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+
+/**
+ * @author Lenovo
+ */
+@Data
+@Configuration
+@PropertySource("classpath:aliyun-oss.properties")
+@ConfigurationProperties(prefix = "aliyun-oss")
+public class OssConfig {
+
+    private String endpoint;
+    private String bucket;
+    private String dir;
+    private String host;
+    private String ak;
+    private String secret;
+
+    @Bean
+    public OSS ossClient() {
+        return new OSSClientBuilder().build(endpoint, ak, secret);
+    }
+}
+
