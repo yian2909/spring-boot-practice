@@ -1,0 +1,18 @@
+thead {
+    background-color: #007BFF; /* 表头背景颜色为蓝色 */
+    color: white; /* 表头文字颜色为白色 */
+}
+
+div {
+    margin: 20px auto; /* 居中显示 */
+    padding: 20px; /* 内边距 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 添加投影效果 */
+    border-radius: 8px; /* 圆角边框 */
+    background-color: #fff; /* 背景颜色 */
+    position: relative; /* 相对定位，如果需要 */
+}
+
+table {
+    width: 80%; /* 表格宽度为100% */
+    border-collapse: collapse; /* 边框合并 */
+}
