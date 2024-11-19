@@ -1,0 +1,62 @@
+spring:
+  data:
+    redis:
+      port: 6379
+      host: 127.0.0.1
+      database: 0  #数据库索引，默认为0
+      password:    #默认为空
+      lettuce:
+        pool:
+          min-idle: 10 #最小空闲数，默认为0
+          max-idle: 20 #最大空闲数，默认为8
+          max-active: 100 #最大连接数
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/spring_boot?userUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: 1412
+
+gx:
+  sms:
+    ccp:
+      serverIp: app.cloopen.com
+      port: 8883
+      accountSId: 2c94811c9035ff9f0192adc226dc7c86
+      accountToken: 5b1a37100f5f4e8d8abcdd3b1bf8cd60
+      appId: 2c94811c9035ff9f0192adc228567c8d
+      templateId: 1
+
+logging:
+  level:
+    com.baomidou.mybatisplus.samples: debug
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+  global-config:
+    db-config:
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+  api-docs:
+    path: /v3/api-docs
+  group-configs:
+    - group: 'default'
+      paths-to-match: '/**'
+      packages-to-scan: top.xg.springboot.redis.controller
+
+knife4j:
+  enable: true
+  setting:
+    language: zh_cn
+  basic:
+    enable: true
+    username: admin
+    password: 123456
